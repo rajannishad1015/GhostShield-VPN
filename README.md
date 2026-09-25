@@ -119,6 +119,15 @@ Traditional VPN services rely on centralized exit servers, commercial certificat
 
 ### Installation
 
+### 1-Click Automated Setup (Windows)
+Simply double-click:
+```cmd
+setup.bat
+```
+This automated installer verifies Node.js, validates Python for Windows Firewall / Netsh orchestration, runs `npm install`, verifies Tor Core binaries, creates an optional 1-Click Desktop Shortcut, and launches the gateway.
+
+### Manual / Cross-Platform Installation
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/rajannishad1015/GhostShield-VPN.git
@@ -131,8 +140,8 @@ npm install
 npm start
 ```
 
-### 1-Click Launch (Windows)
-Simply double-click:
+### 1-Click Gateway Launch (Windows)
+Once setup is complete, double-click:
 ```cmd
 start_portal.bat
 ```
