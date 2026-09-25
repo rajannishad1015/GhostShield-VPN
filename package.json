@@ -1,0 +1,37 @@
+{
+  "name": "ghostshield-vpn",
+  "version": "1.0.0",
+  "description": "GhostShield | Enterprise Defense-Grade Tor Privacy Gateway, Zero-Leak Firewall Kill Switch & Anti-Detect Sandbox",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajannishad1015/GhostShield-VPN.git"
+  },
+  "keywords": [
+    "tor",
+    "vpn",
+    "privacy-gateway",
+    "onion-routing",
+    "socks5-proxy",
+    "kill-switch",
+    "anti-fingerprinting",
+    "stealth-browser",
+    "dns-sinkhole",
+    "cybersecurity"
+  ],
+  "author": "Rajan Nishad",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "fingerprint-generator": "^2.1.88",
+    "fingerprint-injector": "^2.1.88",
+    "puppeteer-core": "^25.11.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "socks-proxy-agent": "^8.0.3"
+  }
+}

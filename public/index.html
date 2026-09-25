@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GhostShield | Enterprise Tor Privacy Gateway</title>
+  <link rel="icon" type="image/png" href="logo.png?v=3.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4.4">
+</head>
+<body class="theme-dark">
+
+  <div class="aerovpn-wrapper">
+
+    <!-- ======================================================== -->
+    <!-- 1. LEFT SIDEBAR                                          -->
+    <!-- ======================================================== -->
+    <aside class="sidebar">
+      
+      <!-- Brand Logo -->
+      <div class="sidebar-brand">
+        <div class="brand-logo-wrap">
+          <img src="logo.png?v=3.0" alt="GhostShield Logo" class="brand-logo-img">
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">Ghost<span class="brand-accent">Shield</span></span>
+          <span class="brand-tag">TOR GATEWAY</span>
+        </div>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li class="nav-item active" data-tab="dashboard">
+            <a href="#dashboard" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="locations">
+            <a href="#locations" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span>Locations</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="servers">
+            <a href="#servers" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+              <span>Tor Relays</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="streaming">
+            <a href="#streaming" class="nav-link" id="navStreamingLink">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span>Streaming</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="security">
+            <a href="#security" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Security</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="logs">
+            <a href="#logs" class="nav-link">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+              <span>Live Logs</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- TOOLS Subsection -->
+        <div class="sidebar-section-title">TOOLS</div>
+        <ul class="nav-list tools-list">
+          <li class="tool-item">
+            <div class="tool-info">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>System Proxy</span>
+            </div>
+            <label class="mini-switch" title="Toggle System-Wide Windows Proxy">
+              <input type="checkbox" id="sidebarProxyToggle">
+              <span class="mini-slider"></span>
+            </label>
+          </li>
+          <li class="tool-item">
+            <div class="tool-info">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+              <span>Split Tunneling</span>
+            </div>
+            <span class="mini-badge-active interactive-badge" id="toolSplitTunnel" title="Click to toggle Split Tunneling">ACTIVE</span>
+          </li>
+          <li class="tool-item">
+            <div class="tool-info">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                <line x1="12" y1="2" x2="12" y2="12"></line>
+              </svg>
+              <span>Kill Switch</span>
+            </div>
+            <span class="mini-badge-active interactive-badge off" id="toolKillSwitch" title="Click to toggle Kill Switch">OFF</span>
+          </li>
+          <li class="tool-item">
+            <div class="tool-info">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+              <span>DNS Guard</span>
+            </div>
+            <span class="mini-badge-active interactive-badge" id="toolDnsGuard" title="Click to toggle DNS Guard">TOR</span>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Bottom Info Banner -->
+      <div class="sidebar-pro-card">
+        <div class="pro-card-header">
+          <span class="crown-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="13" rx="8" ry="7"/>
+              <path d="M12 6V3"/>
+              <path d="M10 3h4"/>
+              <ellipse cx="12" cy="13" rx="4.8" ry="4.2"/>
+              <circle cx="12" cy="13" r="1.5"/>
+            </svg>
+          </span>
+          <span class="pro-tag">TOR CORE ACTIVE</span>
+        </div>
+        <p class="pro-desc">SOCKS5: 127.0.0.1:9050<br>HTTP Tunnel: 127.0.0.1:9080</p>
+        <button class="btn-pro-action" id="sidebarRotateBtn">
+          <span>Rotate Identity Now</span>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- ======================================================== -->
+    <!-- 2. MAIN CENTER CANVAS                                    -->
+    <!-- ======================================================== -->
+    <main class="main-canvas">
+
+      <!-- Top Header Navigation -->
+      <header class="top-nav-bar">
+        <!-- Global Search & Command Palette -->
+        <div class="search-input-wrapper" id="searchWrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="globalSearchInput" placeholder="Search country, city, or relay..." autocomplete="off">
+          <button class="search-clear-btn" id="searchClearBtn" title="Clear search" style="display: none;">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <span class="shortcut-badge" id="shortcutBadge" title="Press Ctrl + K to search">Ctrl K</span>
+
+          <!-- Floating Command Palette & Search Dropdown -->
+          <div class="search-palette-dropdown" id="searchPaletteDropdown">
+            <div class="palette-section-title">QUICK ACTIONS</div>
+            <div class="palette-item" data-action="rotate">
+              <div class="palette-icon-box blue">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                </svg>
+              </div>
+              <div class="palette-info">
+                <strong>Rotate Virtual IP</strong>
+                <span>Request fresh Tor circuit & identity</span>
+              </div>
+              <span class="palette-shortcut">↵</span>
+            </div>
+            <div class="palette-item" data-action="toggle-vpn">
+              <div class="palette-icon-box green">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                  <line x1="12" y1="2" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <div class="palette-info">
+                <strong id="paletteVpnActionText">Toggle VPN (Connect / Disconnect)</strong>
+                <span>Engage or release global encrypted tunnel</span>
+              </div>
+            </div>
+            <div class="palette-item" data-action="logs">
+              <div class="palette-icon-box purple">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
+              </div>
+              <div class="palette-info">
+                <strong>View Tor Security Logs</strong>
+                <span>Inspect live circuit connections & audit logs</span>
+              </div>
+            </div>
+            <div class="palette-item" data-action="theme">
+              <div class="palette-icon-box amber">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                </svg>
+              </div>
+              <div class="palette-info">
+                <strong>Toggle Dark / Light Theme</strong>
+                <span>Switch interface visual color mode</span>
+              </div>
+            </div>
+
+            <div class="palette-section-title">TOR EXIT NODES & COUNTRIES</div>
+            <div class="palette-item" data-country="nl">
+              <img src="https://flagcdn.com/w40/nl.png" class="palette-flag" alt="NL">
+              <div class="palette-info">
+                <strong>Netherlands (Amsterdam)</strong>
+                <span>320 Relays • 18 ms • 28% Load</span>
+              </div>
+              <span class="palette-connect-tag">Connect</span>
+            </div>
+            <div class="palette-item" data-country="de">
+              <img src="https://flagcdn.com/w40/de.png" class="palette-flag" alt="DE">
+              <div class="palette-info">
+                <strong>Germany (Frankfurt)</strong>
+                <span>280 Relays • 24 ms • 35% Load</span>
+              </div>
+              <span class="palette-connect-tag">Connect</span>
+            </div>
+            <div class="palette-item" data-country="us">
+              <img src="https://flagcdn.com/w40/us.png" class="palette-flag" alt="US">
+              <div class="palette-info">
+                <strong>United States (New York)</strong>
+                <span>410 Relays • 85 ms • 44% Load</span>
+              </div>
+              <span class="palette-connect-tag">Connect</span>
+            </div>
+            <div class="palette-item" data-country="ch">
+              <img src="https://flagcdn.com/w40/ch.png" class="palette-flag" alt="CH">
+              <div class="palette-info">
+                <strong>Switzerland (Zurich Encrypted)</strong>
+                <span>195 Relays • 32 ms • 22% Load</span>
+              </div>
+              <span class="palette-connect-tag">Connect</span>
+            </div>
+            <div class="palette-item" data-country="sg">
+              <img src="https://flagcdn.com/w40/sg.png" class="palette-flag" alt="SG">
+              <div class="palette-info">
+                <strong>Singapore (Asia-Pacific)</strong>
+                <span>140 Relays • 68 ms • 31% Load</span>
+              </div>
+              <span class="palette-connect-tag">Connect</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-nav-right">
+          <!-- Theme Toggle -->
+          <button class="icon-control-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+            <span id="themeIconContainer">
+              <svg class="theme-icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </span>
+          </button>
+
+          <!-- Status Indicator Pill & Interactive Circuit Inspector Popover -->
+          <div class="header-popover-anchor">
+            <div class="latency-pill" id="headerStatusPill" title="Click to view Tor circuit details">
+              <span class="status-pulse-dot" id="headerStatusDot"></span>
+              <span id="headerStatusLabel">Tor Online</span>
+              <span class="header-latency-badge" id="headerLatencyNum">18 ms</span>
+              <svg class="pill-chevron" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+
+            <!-- Circuit Inspector Popover -->
+            <div class="circuit-popover" id="circuitPopover">
+              <div class="popover-header">
+                <div class="popover-title">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>Tor Circuit Route</span>
+                </div>
+                <span class="popover-badge green" id="popoverHealthBadge">Encrypted</span>
+              </div>
+              <div class="circuit-chain-diagram">
+                <div class="chain-step">
+                  <span class="chain-dot origin"></span>
+                  <span class="chain-name">You (Local)</span>
+                </div>
+                <span class="chain-arrow">→</span>
+                <div class="chain-step">
+                  <span class="chain-dot guard"></span>
+                  <span class="chain-name">Guard (DE)</span>
+                </div>
+                <span class="chain-arrow">→</span>
+                <div class="chain-step">
+                  <span class="chain-dot middle"></span>
+                  <span class="chain-name">Middle (FR)</span>
+                </div>
+                <span class="chain-arrow">→</span>
+                <div class="chain-step">
+                  <span class="chain-dot exit"></span>
+                  <span class="chain-name" id="popoverExitName">Exit (NL)</span>
+                </div>
+              </div>
+              <div class="circuit-specs-grid">
+                <div class="spec-row">
+                  <span>SOCKS5 Proxy</span>
+                  <strong class="font-mono">127.0.0.1:9050</strong>
+                </div>
+                <div class="spec-row">
+                  <span>HTTP Tunnel</span>
+                  <strong class="font-mono">127.0.0.1:9080</strong>
+                </div>
+                <div class="spec-row">
+                  <span>Latency</span>
+                  <strong class="text-green" id="popoverPingVal">18 ms</strong>
+                </div>
+                <div class="spec-row">
+                  <span>DNS Leak Guard</span>
+                  <strong class="text-green">Active (Zero-Leak)</strong>
+                </div>
+              </div>
+              <div class="popover-actions">
+                <button class="btn-popover-action" id="retestPingBtn">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                  <span>Test Latency</span>
+                </button>
+                <button class="btn-popover-action primary" id="popoverNewCircuitBtn">
+                  <span>New Circuit</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notification Bell & Popover -->
+          <div class="header-popover-anchor">
+            <button class="icon-control-btn notification-btn" id="notificationsBtn" title="View Tor Notifications & Logs">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notification-indicator" id="notifRedDot"></span>
+            </button>
+
+            <!-- Notifications Center Dropdown -->
+            <div class="notif-center-popover" id="notifCenterPopover">
+              <div class="popover-header">
+                <div class="popover-title">
+                  <span>Security Notifications</span>
+                  <span class="notif-count-badge" id="notifCountBadge">3</span>
+                </div>
+                <button class="btn-link-action" id="markAllReadBtn">Clear</button>
+              </div>
+              <ul class="notif-list" id="notifList">
+                <li class="notif-item unread">
+                  <div class="notif-icon-box green">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <polyline points="9 12 11 14 15 10"/>
+                    </svg>
+                  </div>
+                  <div class="notif-content">
+                    <strong>Tor Circuit Established</strong>
+                    <span>3-hop onion circuit encrypted via Amsterdam relay.</span>
+                    <span class="notif-timestamp">Just now</span>
+                  </div>
+                </li>
+                <li class="notif-item unread">
+                  <div class="notif-icon-box blue">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  </div>
+                  <div class="notif-content">
+                    <strong>Zero DNS Leaks Detected</strong>
+                    <span>Remote DNS routing through 127.0.0.1:9050 verified.</span>
+                    <span class="notif-timestamp">2 mins ago</span>
+                  </div>
+                </li>
+                <li class="notif-item">
+                  <div class="notif-icon-box amber">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                  </div>
+                  <div class="notif-content">
+                    <strong>System Proxy Synchronized</strong>
+                    <span>Windows Internet Options routed to Tor gateway.</span>
+                    <span class="notif-timestamp">10 mins ago</span>
+                  </div>
+                </li>
+              </ul>
+              <div class="notif-footer">
+                <button class="btn-view-audit-logs" id="openAuditLogsFromNotifBtn">Open Live Security Drawer →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile & Credentials Popover -->
+          <div class="header-popover-anchor">
+            <div class="user-profile-badge" id="userProfileTrigger" title="Ghost User Credentials & Session">
+              <div class="user-avatar">G</div>
+              <div class="user-meta">
+                <span class="user-name">Ghost User</span>
+                <span class="user-plan">Tor Encrypted</span>
+              </div>
+              <svg class="profile-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+
+            <!-- Profile Popover Menu -->
+            <div class="profile-popover" id="profilePopover">
+              <div class="profile-popover-header">
+                <div class="profile-big-avatar">G</div>
+                <div class="profile-info-block">
+                  <h4 class="profile-handle">Ghost User #4092</h4>
+                  <span class="profile-status-tag"><span class="dot-online"></span> Zero-Knowledge Tunnel</span>
+                </div>
+              </div>
+              <div class="profile-stats-bar">
+                <div class="pstat">
+                  <span class="pstat-lbl">Session Uptime</span>
+                  <strong id="profileUptime">00:10:45</strong>
+                </div>
+                <div class="pstat">
+                  <span class="pstat-lbl">Protocol</span>
+                  <strong>Multi-Hop</strong>
+                </div>
+                <div class="pstat">
+                  <span class="pstat-lbl">Leaks</span>
+                  <strong class="text-green">0 Detected</strong>
+                </div>
+              </div>
+              <div class="profile-actions-list">
+                <button class="profile-action-btn" id="profileRotateAction">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                  <span>Rotate Identity Now</span>
+                </button>
+                <button class="profile-action-btn" id="profileCopyProxyAction">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copy SOCKS5 Proxy Config</span>
+                </button>
+                <button class="profile-action-btn" id="profileClearCacheAction">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                  <span>Flush DNS & Session Cache</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- Scrollable Canvas Content -->
+      <div class="canvas-scroll-area">
+
+
+
+        <!-- CONNECTION CONSOLE (Select Location, Big Circular Power Button, Protocol) -->
+        <section class="connection-console-card">
+          
+          <!-- Left: Select Location Dropdown -->
+          <div class="console-box select-location-box">
+            <span class="box-label">Select Exit Country</span>
+            <div class="location-selector" id="locationSelectorTrigger">
+              <div class="selector-flag" id="selectorFlag">
+                <img src="https://flagcdn.com/w40/nl.png" class="flag-img" alt="NL">
+              </div>
+              <div class="selector-details">
+                <span class="selector-country" id="selectorCountry">Netherlands</span>
+                <span class="selector-sub" id="selectorCity">Amsterdam Relay</span>
+              </div>
+              <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            
+            <!-- Quick Country Dropdown Menu -->
+            <div class="country-dropdown-menu" id="countryDropdownMenu">
+              <div class="dropdown-item active" data-country="random">
+                <span class="flag-globe">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                </span> <strong>Fastest / Random Route</strong>
+              </div>
+              <div class="dropdown-item" data-country="nl">
+                <img src="https://flagcdn.com/w40/nl.png" class="flag-img" alt="NL"> <span>Netherlands (Amsterdam)</span>
+              </div>
+              <div class="dropdown-item" data-country="de">
+                <img src="https://flagcdn.com/w40/de.png" class="flag-img" alt="DE"> <span>Germany (Frankfurt)</span>
+              </div>
+              <div class="dropdown-item" data-country="us">
+                <img src="https://flagcdn.com/w40/us.png" class="flag-img" alt="US"> <span>United States (New York)</span>
+              </div>
+              <div class="dropdown-item" data-country="ch">
+                <img src="https://flagcdn.com/w40/ch.png" class="flag-img" alt="CH"> <span>Switzerland (Zurich)</span>
+              </div>
+              <div class="dropdown-item" data-country="sg">
+                <img src="https://flagcdn.com/w40/sg.png" class="flag-img" alt="SG"> <span>Singapore</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Center: Large Circular Power/Connect Button -->
+          <div class="console-center-button-wrap">
+            <div class="power-ring-outer pulse" id="powerRingOuter">
+              <button class="power-button" id="mainPowerButton" title="Click to Stop VPN (Disconnect)">
+                <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                  <line x1="12" y1="2" x2="12" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+            <div class="power-status-caption">
+              <div class="status-title-row">
+                <span class="status-indicator-dot green" id="mainStatusDot"></span>
+                <span class="status-caption-title" id="mainStatusText">Connected</span>
+              </div>
+              <span class="status-caption-sub" id="mainStatusSub">Your identity is protected</span>
+            </div>
+          </div>
+
+          <!-- Right: Connection Protocol Selector -->
+          <div class="console-box select-protocol-box">
+            <span class="box-label">Connection Protocol</span>
+            <div class="protocol-selector">
+              <div class="protocol-icon-badge">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </div>
+              <div class="protocol-details">
+                <span class="protocol-name">Tor SOCKS5®</span>
+                <span class="protocol-sub">Multi-Hop Routing</span>
+              </div>
+              <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- QUICK ACTIONS ROW -->
+        <section class="quick-actions-row">
+          
+          <!-- 1. Fastest Server -->
+          <div class="action-card" id="quickRotateCard">
+            <div class="action-icon-circle blue">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <div class="action-text">
+              <span class="action-title">Fastest Server</span>
+              <span class="action-sub">Connect instantly</span>
+            </div>
+            <span class="action-arrow">›</span>
+          </div>
+
+          <!-- 2. Streaming -->
+          <div class="action-card" id="quickStreamingCard">
+            <div class="action-icon-circle red">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+            <div class="action-text">
+              <span class="action-title">Streaming</span>
+              <span class="action-sub">Optimized for OTT</span>
+            </div>
+            <span class="action-arrow">›</span>
+          </div>
+
+          <!-- 3. Gaming -->
+          <div class="action-card" id="quickGamingCard">
+            <div class="action-icon-circle purple">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                <line x1="6" y1="12" x2="10" y2="12"></line>
+                <line x1="8" y1="10" x2="8" y2="14"></line>
+                <circle cx="15" cy="11" r="1"></circle>
+                <circle cx="17" cy="13" r="1"></circle>
+              </svg>
+            </div>
+            <div class="action-text">
+              <span class="action-title">Gaming</span>
+              <span class="action-sub">Low latency servers</span>
+            </div>
+            <span class="action-arrow">›</span>
+          </div>
+
+          <!-- 4. P2P Sharing -->
+          <div class="action-card" id="quickP2pCard">
+            <div class="action-icon-circle green">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+            </div>
+            <div class="action-text">
+              <span class="action-title">P2P</span>
+              <span class="action-sub">Optimized for torrent</span>
+            </div>
+            <span class="action-arrow">›</span>
+          </div>
+
+        </section>
+
+        <!-- LIVE TOR 3-HOP RELAY CIRCUIT VISUALIZER -->
+        <section class="tor-circuit-section" id="torCircuitSection">
+          <!-- Header Bar -->
+          <div class="circuit-section-header">
+            <div class="circuit-title-group">
+              <div class="circuit-shield-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M12 8v4M12 16h.01"/>
+                </svg>
+              </div>
+              <div class="circuit-header-text">
+                <div class="circuit-title-row">
+                  <h3 class="circuit-main-title">Active Tor Circuit</h3>
+                  <span class="circuit-security-badge">3-Hop Isolated Route</span>
+                </div>
+                <span class="circuit-sub-title">Multi-hop cryptographic route with Zero-Knowledge relay isolation</span>
+              </div>
+            </div>
+
+            <div class="circuit-actions-bar">
+              <div class="circuit-telemetry-item" title="Live Outbound & Inbound Network Throughput">
+                <span class="telemetry-label">Throughput:</span>
+                <span class="telemetry-speed down"><span class="speed-arrow">↓</span> <span id="circuitLiveDownSpeed">0 KB/s</span></span>
+                <span class="telemetry-sep">•</span>
+                <span class="telemetry-speed up"><span class="speed-arrow">↑</span> <span id="circuitLiveUpSpeed">0 KB/s</span></span>
+              </div>
+              <div class="circuit-status-chip" id="circuitStatusBadge">
+                <span class="chip-pulse-dot"></span>
+                <span>3 Hops Active</span>
+              </div>
+              <button class="btn-circuit-action" id="btnRebuildCircuit" title="Construct a fresh 3-hop cryptographic circuit">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                </svg>
+                <span>New Circuit</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Topology Pipeline Track -->
+          <div class="circuit-topology-track" id="circuitNodesFlow">
+            <!-- Node 0: Origin -->
+            <div class="topology-node" title="Local workstation client tunnel">
+              <div class="node-meta-bar">
+                <span class="node-step-tag">01 · ORIGIN</span>
+                <span class="node-geo-tag">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  <span>LOCAL</span>
+                </span>
+              </div>
+              <div class="node-identity">
+                <span class="node-hostname" id="circuitOriginName">Local Client</span>
+                <span class="node-endpoint" id="circuitOriginIp">127.0.0.1:9050</span>
+              </div>
+              <div class="node-spec-bar">
+                <span class="node-spec-badge">SOCKS5 Inbound</span>
+              </div>
+            </div>
+
+            <!-- Bridge 1 -->
+            <div class="topology-bridge">
+              <div class="bridge-crypto-pill">
+                <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Layer 3</span>
+              </div>
+              <div class="bridge-line">
+                <span class="bridge-stream-glow"></span>
+              </div>
+              <span class="bridge-subtext">Guard Key</span>
+            </div>
+
+            <!-- Node 1: Guard Relay -->
+            <div class="topology-node" id="cardGuardNode" title="Click to copy relay IP address">
+              <div class="node-meta-bar">
+                <span class="node-step-tag">02 · GUARD</span>
+                <span class="node-geo-tag" id="circuitGuardCountry">
+                  <img src="https://flagcdn.com/w40/de.png" class="circuit-flag-img" alt="DE">
+                  <span>DE</span>
+                </span>
+              </div>
+              <div class="node-identity">
+                <span class="node-hostname" id="circuitGuardNickname">masterchief</span>
+                <span class="node-endpoint" id="circuitGuardIp">46.4.66.188</span>
+              </div>
+              <div class="node-spec-bar">
+                <span class="node-spec-badge" id="circuitGuardBw">99 MB/s Capacity</span>
+              </div>
+            </div>
+
+            <!-- Bridge 2 -->
+            <div class="topology-bridge">
+              <div class="bridge-crypto-pill">
+                <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Layer 2</span>
+              </div>
+              <div class="bridge-line">
+                <span class="bridge-stream-glow delay-1"></span>
+              </div>
+              <span class="bridge-subtext">Relay Key</span>
+            </div>
+
+            <!-- Node 2: Middle Relay -->
+            <div class="topology-node" id="cardMiddleNode" title="Click to copy relay IP address">
+              <div class="node-meta-bar">
+                <span class="node-step-tag">03 · MIDDLE</span>
+                <span class="node-geo-tag" id="circuitMiddleCountry">
+                  <img src="https://flagcdn.com/w40/fi.png" class="circuit-flag-img" alt="FI">
+                  <span>FI</span>
+                </span>
+              </div>
+              <div class="node-identity">
+                <span class="node-hostname" id="circuitMiddleNickname">PWKR</span>
+                <span class="node-endpoint" id="circuitMiddleIp">95.216.96.44</span>
+              </div>
+              <div class="node-spec-bar">
+                <span class="node-spec-badge" id="circuitMiddleBw">81 MB/s Capacity</span>
+              </div>
+            </div>
+
+            <!-- Bridge 3 -->
+            <div class="topology-bridge">
+              <div class="bridge-crypto-pill exit">
+                <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                <span>Layer 1 (Exit)</span>
+              </div>
+              <div class="bridge-line">
+                <span class="bridge-stream-glow delay-2"></span>
+              </div>
+              <span class="bridge-subtext">Clear Payload</span>
+            </div>
+
+            <!-- Node 3: Exit Node -->
+            <div class="topology-node exit-target" id="cardExitNode" title="Click to copy exit IP address">
+              <div class="node-meta-bar">
+                <span class="node-step-tag highlight">04 · EXIT</span>
+                <span class="node-geo-tag" id="circuitExitCountry">
+                  <img src="https://flagcdn.com/w40/us.png" class="circuit-flag-img" alt="US">
+                  <span>US</span>
+                </span>
+              </div>
+              <div class="node-identity">
+                <span class="node-hostname" id="circuitExitNickname">Quetzalcoatl</span>
+                <span class="node-endpoint" id="circuitExitIp">192.210.214.13</span>
+              </div>
+              <div class="node-spec-bar">
+                <span class="node-spec-badge egress" id="circuitExitBw">Egress Gateway</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ALL SERVERS TABLE / LIST -->
+        <section class="all-servers-section">
+          <div class="servers-header-bar">
+            <div class="servers-title-wrap">
+              <h3 class="servers-heading">All Tor Exit Relays</h3>
+              <div class="table-search-wrap">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="tableSearchInput" placeholder="Search servers or countries...">
+              </div>
+            </div>
+
+            <div class="servers-filter-tabs">
+              <button class="filter-tab active" data-filter="all">All</button>
+              <button class="filter-tab" data-filter="recommended">Recommended</button>
+              <button class="filter-tab" data-filter="europe">Europe</button>
+              <button class="filter-tab" data-filter="americas">Americas</button>
+              <button class="filter-tab" data-filter="asia">Asia</button>
+              <button class="btn-filter-icon" title="More Filters">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                <span>Filters</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- The Table -->
+          <div class="servers-table-responsive">
+            <table class="servers-table" id="relaysTable">
+              <thead>
+                <tr>
+                  <th>Country</th>
+                  <th>Relays</th>
+                  <th>Load</th>
+                  <th>Latency</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row" data-code="nl" data-region="europe">
+                  <td class="col-country">
+                    <span class="table-flag"><img src="https://flagcdn.com/w40/nl.png" class="flag-img" alt="NL"></span>
+                    <div class="table-country-name">
+                      <strong>Netherlands</strong>
+                      <span>Amsterdam Circuit</span>
+                    </div>
+                  </td>
+                  <td class="col-count">320</td>
+                  <td class="col-load">
+                    <div class="load-bar-wrap">
+                      <div class="load-fill" style="width: 28%; background: #10b981;"></div>
+                    </div>
+                    <span class="load-pct">28%</span>
+                  </td>
+                  <td class="col-latency"><span class="latency-dot green"></span> 18 ms</td>
+                  <td class="col-status"><span class="status-pill-online">Online</span></td>
+                  <td class="col-action">
+                    <button class="btn-connect-relay" onclick="switchExitCountry('nl')">Connect</button>
+                    <button class="btn-star" title="Favorite">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="table-row" data-code="de" data-region="europe">
+                  <td class="col-country">
+                    <span class="table-flag"><img src="https://flagcdn.com/w40/de.png" class="flag-img" alt="DE"></span>
+                    <div class="table-country-name">
+                      <strong>Germany</strong>
+                      <span>Frankfurt Node</span>
+                    </div>
+                  </td>
+                  <td class="col-count">280</td>
+                  <td class="col-load">
+                    <div class="load-bar-wrap">
+                      <div class="load-fill" style="width: 35%; background: #10b981;"></div>
+                    </div>
+                    <span class="load-pct">35%</span>
+                  </td>
+                  <td class="col-latency"><span class="latency-dot green"></span> 24 ms</td>
+                  <td class="col-status"><span class="status-pill-online">Online</span></td>
+                  <td class="col-action">
+                    <button class="btn-connect-relay" onclick="switchExitCountry('de')">Connect</button>
+                    <button class="btn-star" title="Favorite">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="table-row" data-code="us" data-region="americas">
+                  <td class="col-country">
+                    <span class="table-flag"><img src="https://flagcdn.com/w40/us.png" class="flag-img" alt="US"></span>
+                    <div class="table-country-name">
+                      <strong>United States</strong>
+                      <span>New York / Ashburn</span>
+                    </div>
+                  </td>
+                  <td class="col-count">410</td>
+                  <td class="col-load">
+                    <div class="load-bar-wrap">
+                      <div class="load-fill" style="width: 44%; background: #f59e0b;"></div>
+                    </div>
+                    <span class="load-pct">44%</span>
+                  </td>
+                  <td class="col-latency"><span class="latency-dot yellow"></span> 85 ms</td>
+                  <td class="col-status"><span class="status-pill-online">Online</span></td>
+                  <td class="col-action">
+                    <button class="btn-connect-relay" onclick="switchExitCountry('us')">Connect</button>
+                    <button class="btn-star" title="Favorite">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="table-row" data-code="ch" data-region="europe">
+                  <td class="col-country">
+                    <span class="table-flag"><img src="https://flagcdn.com/w40/ch.png" class="flag-img" alt="CH"></span>
+                    <div class="table-country-name">
+                      <strong>Switzerland</strong>
+                      <span>Zurich Encrypted</span>
+                    </div>
+                  </td>
+                  <td class="col-count">195</td>
+                  <td class="col-load">
+                    <div class="load-bar-wrap">
+                      <div class="load-fill" style="width: 22%; background: #10b981;"></div>
+                    </div>
+                    <span class="load-pct">22%</span>
+                  </td>
+                  <td class="col-latency"><span class="latency-dot green"></span> 32 ms</td>
+                  <td class="col-status"><span class="status-pill-online">Online</span></td>
+                  <td class="col-action">
+                    <button class="btn-connect-relay" onclick="switchExitCountry('ch')">Connect</button>
+                    <button class="btn-star" title="Favorite">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr class="table-row" data-code="sg" data-region="asia">
+                  <td class="col-country">
+                    <span class="table-flag"><img src="https://flagcdn.com/w40/sg.png" class="flag-img" alt="SG"></span>
+                    <div class="table-country-name">
+                      <strong>Singapore</strong>
+                      <span>Asia-Pacific Hub</span>
+                    </div>
+                  </td>
+                  <td class="col-count">140</td>
+                  <td class="col-load">
+                    <div class="load-bar-wrap">
+                      <div class="load-fill" style="width: 31%; background: #10b981;"></div>
+                    </div>
+                    <span class="load-pct">31%</span>
+                  </td>
+                  <td class="col-latency"><span class="latency-dot yellow"></span> 68 ms</td>
+                  <td class="col-status"><span class="status-pill-online">Online</span></td>
+                  <td class="col-action">
+                    <button class="btn-connect-relay" onclick="switchExitCountry('sg')">Connect</button>
+                    <button class="btn-star" title="Favorite">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ======================================================== -->
+    <!-- 3. RIGHT TELEMETRY SIDEBAR                               -->
+    <!-- ======================================================== -->
+    <aside class="telemetry-panel">
+
+      <!-- Current Connection Card -->
+      <div class="telemetry-card current-connection-card">
+        <div class="card-header-line">
+          <div class="card-title-group">
+            <span class="card-title-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </span>
+            <span class="telemetry-title">Current Connection</span>
+          </div>
+          <span class="badge-status-online" id="panelOnlineBadge">
+            <span class="dot-live"></span> Connected
+          </span>
+        </div>
+
+        <div class="active-location-row">
+          <div class="panel-flag-box" id="panelFlag">
+            <img src="https://flagcdn.com/w40/nl.png" class="flag-img-lg" alt="NL">
+          </div>
+          <div class="location-text">
+            <h4 class="location-country" id="panelCountryName">Netherlands</h4>
+            <span class="location-node" id="panelCityNode">Amsterdam Relay #9050</span>
+          </div>
+          <button class="btn-panel-rotate" id="panelRotateBtn" title="Request New Tor Circuit">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.3">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="stats-metric-grid">
+          <div class="metric-cell">
+            <span class="metric-label">Session Duration</span>
+            <div class="metric-value-row">
+              <svg class="metric-mini-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span class="metric-value font-mono" id="connectedStopwatch">00:08:42</span>
+            </div>
+          </div>
+
+          <div class="metric-cell">
+            <span class="metric-label">Your Virtual IP</span>
+            <div class="metric-value-row ip-row">
+              <span class="metric-value font-mono ip-truncate" id="panelVirtualIp">Acquiring...</span>
+              <button class="btn-copy-inline" id="copyVirtualIpBtn" title="Copy Virtual IP">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="metric-cell">
+            <span class="metric-label">Protocol</span>
+            <div class="metric-value-row">
+              <span class="metric-tag-pill">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="13" rx="8" ry="7"/>
+                  <path d="M12 6V3"/>
+                  <ellipse cx="12" cy="13" rx="4.8" ry="4.2"/>
+                </svg>
+                <span>SOCKS5 Multi-Hop</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="metric-cell">
+            <span class="metric-label">Tunnel Latency</span>
+            <div class="metric-value-row">
+              <span class="metric-tag-pill latency-good"><span class="ping-dot green"></span> 18 ms</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="auto-rotate-row">
+          <div class="auto-lbl-group">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Auto-Rotate IP</span>
+          </div>
+          <div class="styled-select-wrap">
+            <select id="autoTimerDropdown" class="auto-rotate-select">
+              <option value="0">Off (Manual)</option>
+              <option value="30">Every 30s</option>
+              <option value="60">Every 1 Min</option>
+              <option value="300">Every 5 Mins</option>
+            </select>
+            <svg class="select-chevron-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+
+        <button class="btn-disconnect-action" id="disconnectOrRotateBtn" title="Click to Disconnect or Connect VPN">
+          <span class="square-icon" id="disconnectBtnIcon">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+            </svg>
+          </span>
+          <span id="disconnectBtnText">Disconnect</span>
+        </button>
+      </div>
+
+      <!-- Data Usage & Live Chart Card -->
+      <div class="telemetry-card data-usage-card">
+        <div class="card-header-line">
+          <div class="card-title-group">
+            <span class="card-title-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </span>
+            <span class="telemetry-title">Data Usage</span>
+          </div>
+          <div class="dropdown-pill">
+            <span>This Session</span>
+            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+
+        <div class="bandwidth-numbers-row">
+          <div class="bw-stat down">
+            <div class="bw-arrow-icon down">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <polyline points="19 12 12 19 5 12"/>
+              </svg>
+            </div>
+            <div class="bw-details">
+              <div class="bw-num-row">
+                <span class="bw-num" id="downloadStatNum">215 MB</span>
+              </div>
+              <span class="bw-lbl">Downloaded</span>
+            </div>
+          </div>
+
+          <div class="bw-stat up">
+            <div class="bw-arrow-icon up">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5"/>
+                <polyline points="5 12 12 5 19 12"/>
+              </svg>
+            </div>
+            <div class="bw-details">
+              <div class="bw-num-row">
+                <span class="bw-num" id="uploadStatNum">48 MB</span>
+              </div>
+              <span class="bw-lbl">Uploaded</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Sparkline Bandwidth Wave (SVG) -->
+        <div class="sparkline-container">
+          <svg class="sparkline-svg" viewBox="0 0 300 80" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="chartGradientBlue" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+              </linearGradient>
+              <linearGradient id="chartGradientGreen" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Grid Lines -->
+            <line x1="0" y1="25" x2="300" y2="25" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+            <line x1="0" y1="55" x2="300" y2="55" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+
+            <!-- Downstream Curve (Blue) -->
+            <path class="chart-area-blue" d="M 0,60 Q 40,45 80,55 T 160,35 T 230,45 T 300,20 L 300,80 L 0,80 Z" />
+            <path class="chart-stroke-blue" id="sparklineBlue" d="M 0,60 Q 40,45 80,55 T 160,35 T 230,45 T 300,20" />
+
+            <!-- Upstream Curve (Green) -->
+            <path class="chart-area-green" d="M 0,70 Q 50,65 100,50 T 200,60 T 300,45 L 300,80 L 0,80 Z" />
+            <path class="chart-stroke-green" id="sparklineGreen" d="M 0,70 Q 50,65 100,50 T 200,60 T 300,45" />
+
+            <!-- Live Sparkline Pulse Dot -->
+            <circle cx="300" cy="20" r="3.5" fill="#38bdf8" class="chart-pulse-dot" />
+          </svg>
+
+          <div class="sparkline-timeline">
+            <span>1m</span>
+            <span>5m</span>
+            <span>15m</span>
+            <span>30m</span>
+            <span>1h</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Connections History -->
+      <div class="telemetry-card recent-connections-card">
+        <div class="card-header-line">
+          <div class="card-title-group">
+            <span class="card-title-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </span>
+            <span class="telemetry-title">Recent Connections</span>
+          </div>
+          <a href="#all-connections" class="link-view-all" id="viewAllLogsLink">View Logs →</a>
+        </div>
+
+        <ul class="recent-list" id="recentCircuitsList">
+          <li class="recent-item" onclick="switchExitCountry('nl')" title="Switch to Netherlands">
+            <div class="recent-flag-wrap">
+              <img src="https://flagcdn.com/w40/nl.png" class="recent-flag-img" alt="NL">
+            </div>
+            <div class="recent-meta">
+              <span class="recent-place">Netherlands (Amsterdam)</span>
+              <span class="recent-time">Today, 10:24 PM • 10 Gbps</span>
+            </div>
+            <div class="recent-tag">
+              <span class="dot-green"></span>
+              <span>Active</span>
+              <span class="chevron">›</span>
+            </div>
+          </li>
+
+          <li class="recent-item" onclick="switchExitCountry('de')" title="Switch to Germany">
+            <div class="recent-flag-wrap">
+              <img src="https://flagcdn.com/w40/de.png" class="recent-flag-img" alt="DE">
+            </div>
+            <div class="recent-meta">
+              <span class="recent-place">Germany (Frankfurt)</span>
+              <span class="recent-time">Today, 08:15 PM • 24 ms</span>
+            </div>
+            <div class="recent-tag">
+              <span class="badge-recent-time">45m</span>
+              <span class="chevron">›</span>
+            </div>
+          </li>
+
+          <li class="recent-item" onclick="switchExitCountry('us')" title="Switch to United States">
+            <div class="recent-flag-wrap">
+              <img src="https://flagcdn.com/w40/us.png" class="recent-flag-img" alt="US">
+            </div>
+            <div class="recent-meta">
+              <span class="recent-place">United States (New York)</span>
+              <span class="recent-time">Today, 05:48 PM • 85 ms</span>
+            </div>
+            <div class="recent-tag">
+              <span class="badge-recent-time">1h 20m</span>
+              <span class="chevron">›</span>
+            </div>
+          </li>
+
+          <li class="recent-item" onclick="switchExitCountry('ch')" title="Switch to Switzerland">
+            <div class="recent-flag-wrap">
+              <img src="https://flagcdn.com/w40/ch.png" class="recent-flag-img" alt="CH">
+            </div>
+            <div class="recent-meta">
+              <span class="recent-place">Switzerland (Zurich)</span>
+              <span class="recent-time">Yesterday, 11:30 PM • Zero-Log</span>
+            </div>
+            <div class="recent-tag">
+              <span class="badge-recent-time">32 ms</span>
+              <span class="chevron">›</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- Toast Notification Bar -->
+  <div class="toast-popup" id="toastPopup"></div>
+
+  <!-- Real-time Activity Logs Modal (Slide-in or Floating) -->
+  <div class="logs-drawer" id="logsDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+        <span>Live Tor Security & Audit Log</span>
+      </div>
+      <div class="drawer-actions">
+        <button class="btn-clear-drawer" id="clearDrawerLogsBtn">Clear</button>
+        <button class="btn-close-drawer" id="closeDrawerBtn">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="drawer-body" id="drawerLogsBox">
+      <div class="log-row">[SYSTEM] Tor Gateway Initialized on 127.0.0.1:9050</div>
+    </div>
+  </div>
+
+  <script src="app.js?v=4.2"></script>
+</body>
+</html>
