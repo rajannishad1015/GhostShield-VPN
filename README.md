@@ -17,6 +17,12 @@
 
 [Key Features](#-core-capabilities) • [Architecture](#-system-architecture) • [Quick Start](#-quick-start) • [API Reference](#-api-endpoints) • [Threat Model](#-threat-model--zero-leak-guarantees) • [License](#-license)
 
+<br/>
+
+<a href="https://github.com/rajannishad1015/GhostShield-VPN">
+  <img src="docs/assets/UI-Demo.png" alt="GhostShield Dashboard Interface Preview" width="100%" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 14px;"/>
+</a>
+
 ---
 
 </div>
